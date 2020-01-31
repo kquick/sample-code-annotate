@@ -12,5 +12,5 @@ text.
 Uses htmlize + CSS for code decoration.
 
   * [[sample.txt][Text output]]
-  [[http://secexec.net/sample.html][* HTML output]]
+  * [[http://secexec.net/sample.html][HTML output]]
   * [[http://secexec.net/sample.pdf][PDF output]]
