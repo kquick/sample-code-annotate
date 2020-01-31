@@ -1,0 +1,16 @@
+This is a small example of using emacs org-mode and babel to generate
+annotated code descriptions.
+
+The code is included and a reference is added to each line that will
+be referenced (only one reference per line is supported).
+
+Lines are automatically numbered by org-mode babel.
+
+Org links in HTML can reference the lines in the link aref and the
+text.
+
+Uses htmlize + CSS for code decoration.
+
+[[sample.txt][Text output]]
+[[http://secexec.net/sample.html][HTML output]]
+[[http://secexec.net/sample.pdf][PDF output]]
