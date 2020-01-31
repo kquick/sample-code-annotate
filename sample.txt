@@ -1,0 +1,54 @@
+Kevin Quick
+
+
+Table of Contents
+_________________
+
+
+
+
+This is an example of using org-mode babel + javascript for mouse-over
+highlighting.
+
+The source code is here:
+
+,----
+|  1  int flag;
+|  2  
+|  3  bool coin();
+|  4  
+|  5  void foo() {
+|  6    flag = coin();
+|  7  }
+|  8  
+|  9  int main() {
+| 10    int *x = 0;
+| 11    flag = true;
+| 12    foo();
+| 13    if (flag) {
+| 14      x = new int;
+| 15    }
+| 16    foo();
+| 17  
+| 18    if (flag) {
+| 19      *x = 5;
+| 20    }
+| 21  }
+`----
+Listing 1: basic.c
+
+In the above code, the following sequence of notes applies:
+
+1. Line 10: `'x'' initialized to a null pointer value
+2. Line 13: Assuming `'flag'' is `0'
+3. Calling `'foo''
+4. Entered call from `'main''
+5. Line 6: Value assigned to `'flag'', which participates in a condition
+   later
+6. Returning from `'foo''
+7. Line 18: Assuming `'flag'' is not equal to `0'
+8. Line 19: Dereference of null pointer (loaded from variable `'x'')!
+
+The above demonstrates the sequence of calls that cause the errors.
+Mouse-over each entry in the list to have the corresponding code line
+highlighted.
