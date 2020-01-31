@@ -1,0 +1,47 @@
+#+SETUPFILE: theme.setup
+#+HTML_HEAD: <link href="sample.css" rel="stylesheet" type="text/css"/>
+
+This is an example of using org-mode babel + javascript for mouse-over highlighting.
+
+The source code is here:
+
+#+CAPTION: basic.c
+#+NAME: basic.c
+#+BEGIN_SRC C -n -r -l "#(ref:%s)" :file basic.c
+int flag;
+
+bool coin();
+
+void foo() { #(ref:foofrommain)
+  flag = coin();  #(ref:setflag)
+}
+
+int main() {
+  int *x = 0;  #(ref:init-x)
+  flag = true;
+  foo();
+  if (flag) {  #(ref:assumeflag0)
+    x = new int;
+  }
+  foo();  #(ref:callfoo)
+  #(ref:retfoo)
+  if (flag) { #(ref:assumeflag-ne-0)
+    *x = 5; #(ref:derefnull)
+  }
+}
+#+END_SRC
+
+In the above code, the following sequence of notes applies:
+
+  1. [[(init-x)][Line (init-x): ~'x'~ initialized to a null pointer value]]
+  1. [[(assumeflag0)][Line (assumeflag0): Assuming ~'flag'~ is ~0~]]
+  1. [[(callfoo)][Calling ~'foo'~]]
+  1. [[(foofrommain)][Entered call from ~'main'~]]
+  1. [[(setflag)][Line (setflag): Value assigned to ~'flag'~]], which participates in a condition later
+  1. [[(retfoo)][Returning from ~'foo'~]]
+  1. [[(assumeflag-ne-0)][Line (assumeflag-ne-0): Assuming ~'flag'~ is not equal to ~0~]]
+  1. [[(derefnull)][Line (derefnull): Dereference of null pointer (loaded from variable ~'x'~)!]]
+
+The above demonstrates the sequence of calls that cause the errors.
+Mouse-over each entry in the list to have the corresponding code line
+highlighted.

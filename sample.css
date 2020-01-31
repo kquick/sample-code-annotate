@@ -1,0 +1,17 @@
+body { font-size: 120%; }
+
+pre.src-python {background-color:hsl(180,22%,50%)}
+pre.src-C { background-color: hsl(180,100%,90%); }
+
+.org-builtin {color:#7a378b;}
+.org-keyword {color:#a020f0;}
+.org-string  {color:#003000;}
+.org-variable-name {color:#808080; font-weight:bold; }
+.org-function-name {color:#006699; font-weight:bold; }
+.org-type {color:#6434a3}
+.src-C .org-preprocessor {color:#ba36a5;font-syle:italic;}
+.src-C .org-constant {color:#d0372d}
+.src-C .org-comment-delimiter {color:#8d8d84}
+.src-C .org-comment {color:#b22222}
+
+#postamble { font-size: 20%; }
